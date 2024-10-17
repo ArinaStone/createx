@@ -24,4 +24,24 @@ $(function () {
         e.preventDefault()
         $('.team__slider').slick('slickPrev')
     })
+
+    $('.testimonials__slider').slick({
+        arrows: false,
+        dots: true,
+        // slidesToShow: 1,
+        appendDots: $('.testimonials__dots'),
+        waitForAnimate: false,
+    })
+
+    $('.testimonials__next').on('click', function (e) {
+        e.preventDefault()
+        $('.testimonials__slider').slick('slickNext')
+    })
+    
+    $('.testimonials__prev').on('click', function (e) {
+        e.preventDefault()
+        $('.testimonials__slider').slick('slickPrev')
+    })
+
+    
 })
