@@ -43,5 +43,32 @@ $(function () {
         $('.testimonials__slider').slick('slickPrev')
     })
 
-    
+    // Вариант, когда можно открыть все вкладки одновременно и они не будут закрываться
+    // $('.program__acc-link').on('click', function (e) {
+    //     e.preventDefault()
+    //     $(this).toggleClass('program__acc-link--active')
+    //     $(this).children('.program__acc-text').slideToggle()
+    // })
+
+    // Вариант, когда можно открыть только одну вкладку единовременно, остальные закроются
+    $('.program__acc-link').on('click', function(e){
+        e.preventDefault()
+        if ($(this).hasClass('program__acc-link--active')) {
+            $(this).removeClass('program__acc-link--active')
+            $(this).children('.program__acc-text').slideUp()
+            stopImmediatePropagation()
+        }   
+        $('.program__acc-link').removeClass('program__acc-link--active')
+        $('.program__acc-text').slideUp()
+        $(this).toggleClass('program__acc-link--active')
+        $(this).children('.program__acc-text').slideDown()
+    })
+
+    $(".header__nav-list a, .header__btn, .footer__go-top").on("click", function (e) {
+        e.preventDefault()
+        var id = $(this).attr('href'),
+            top = $(id).offset().top - 100
+        $('body,html').animate({ scrollTop: top }, 800)
+        })
+
 })
